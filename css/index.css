@@ -217,6 +217,7 @@ input[type=range]::-moz-range-thumb {
 .input-wrap input::-webkit-outer-spin-button,
 .input-wrap input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  -moz-appearance: textfield;
   appearance: none;
   margin: 0;
 }
@@ -399,6 +400,8 @@ input[type=range]::-moz-range-thumb {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+  widt: 12px;
+  height: 24px;
 }
 
 .dropdown__title.click ~ .dropdown__list {
