@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>= Spiks</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="/js/index.js" defer></script>
+</html>
+<body class="container-xl">
+  <header class="header"> <a class="logo" href="#"><span>Marketplace </span></a>
+    <form class="search">
+      <input class="search__input" type="text" placeholder="Search">
+      <button class="search__btn" type="submit"><img src="assets/media/search.svg" alt="search loop"></button>
+    </form>
+  </header>
+  <main class="main"> 
+    <div class="range">
+      <h2> Price Range</h2>
+      <div class="range__slider"><span class="range__track"></span>
+        <input class="range__min" type="range" name="min-value" min="500" max="9999" step="1" value="500" oninput="slideMin()">
+        <input class="range__max" type="range" name="max-value" min="500" max="9999" step="1" value="9999" oninput="slideMax()">
+        <div class="tooltip tooltip_min"></div>
+        <div class="tooltip tooltip_max"></div>
+      </div>
+      <div class="range__boxes"> 
+        <div class="box box__min-box"> 
+          <div class="input-wrap"> 
+            <input class="input-wrap__min" type="number" name="input-min-wrap" onchange="setMinInput()"><span>$</span>
+          </div>
+        </div>
+        <div class="box box__max-box"> 
+          <div class="input-wrap"> 
+            <input class="input-wrap__max" type="number" name="input-max-wrap" onchange="setMaxInput()"><span>$</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="result-info"> 
+      <p class="result-info__text"> <span class="number">99999</span><span class="text">Results</span></p>
+      <ul class="badges"> </ul>
+    </div>
+    <div class="drop-down-list">
+      <div class="dropdown"> 
+        <div class="dropdown__title"> <span>Classification</span><img src="/assets/media/arrow_down.svg" alt="arrow"></div>
+        <ul class="dropdown__list"> 
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop1-opt1" value="Vegetables">
+            <label class="dropdown__label" for="drop1-opt1">Vegetables</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop1-opt2" value="Carbs">
+            <label class="dropdown__label" for="drop1-opt2">Carbs </label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop1-opt3" value="Fats">
+            <label class="dropdown__label" for="drop1-opt3">Fats</label>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown"> 
+        <div class="dropdown__title"> <span>Delivery Period</span><img src="assets/media/arrow_down.svg" alt="arrow"></div>
+        <ul class="dropdown__list"> 
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt2" value="1h">
+            <label class="dropdown__label" for="drop2-opt2">1h</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt2" value="24h">
+            <label class="dropdown__label" for="drop2-opt2">24h</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt3" value="Today">
+            <label class="dropdown__label" for="drop2-opt3">Today</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt3" value="Next Week">
+            <label class="dropdown__label" for="drop2-opt3">Next Week</label>
+          </li>
+        </ul>
+      </div>
+      <div class="dropdown"> 
+        <div class="dropdown__title"> <span>Size</span><img src="assets/media/arrow_down.svg" alt="arrow"></div>
+        <ul class="dropdown__list"> 
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt1" value="Huge">
+            <label class="dropdown__label" for="drop3-opt1">Huge</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt2" value="Large">
+            <label class="dropdown__label" for="drop3-opt2">Large</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt3" value="Meduim">
+            <label class="dropdown__label" for="drop3-opt3">Meduim</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt3" value="Small">
+            <label class="dropdown__label" for="drop3-opt3">Small</label>
+          </li>
+          <li class="dropdown__item"> 
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt3" value="Tiny">
+            <label class="dropdown__label" for="drop3-opt3">Tiny</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>

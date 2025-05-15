@@ -1,0 +1,17 @@
+include ../../src/sections/head/index.pug
+
+  title
+    block title
+  body
+    .layout
+      .layout__header
+        block beforeWorkarea
+
+      .layout__main
+        block workarea
+
+      .layout__footer
+        block afterWorkarea
+      
+
+    script(src="js/index.js")
