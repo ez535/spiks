@@ -140,57 +140,63 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     buildHttpClient: buildHttpClient
   };
 })(window);
-window.onload = function () {
-  slideMin();
-  slideMax();
-};
-var minVal = document.querySelector(".range__min");
-var maxVal = document.querySelector(".range__max");
-var priceInputMin = document.querySelector(".input-wrap__min");
-var priceInputMax = document.querySelector(".input-wrap__max");
-var maxTooltip = document.querySelector(".tooltip_max");
-var minGap = 0;
-var range = document.querySelector(".range__track");
-var sliderMinValue = parseInt(minVal.min);
-var sliderMaxValue = parseInt(maxVal.max);
-function slideMin() {
-  var gap = parseInt(maxVal.value) - parseInt(minVal.value);
-  if (gap <= minGap) {
-    minVal.value = parseInt(maxVal.value) - minGap;
-  }
-  priceInputMin.value = minVal.value;
-  setArea();
-}
-function slideMax() {
-  var gap = parseInt(maxVal.value) - parseInt(minVal.value);
-  if (gap <= minGap) {
-    maxVal.value = parseInt(minVal.value) + minGap;
-  }
-  maxTooltip.innerHTML = maxVal.value + '$';
-  priceInputMax.value = maxVal.value;
-  setArea();
-}
-function setArea() {
-  range.style.left = "".concat((minVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue) * 100, "%");
-  range.style.right = "".concat(100 - (maxVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue) * 100, "%");
-  maxTooltip.style.right = 100 - maxVal.value / sliderMaxValue * 100 + "%";
-}
-function setMinInput() {
-  var minPrice = parseInt(priceInputMin.value);
-  if (minPrice < sliderMinValue) {
-    priceInputMin.value = sliderMinValue;
-  }
-  minVal.value = priceInputMin.value;
-  slideMin();
-}
-function setMaxInput() {
-  var maxPrice = parseInt(priceInputMax.value);
-  if (maxPrice > sliderMaxValue) {
-    priceInputMax.value = sliderMaxValue;
-  }
-  maxVal.value = priceInputMax.value;
-  slideMax();
-}
+var slider = document.getElementById('slider');
+var input0 = document.getElementById('input-with-keypress-0');
+var input1 = document.getElementById('input-with-keypress-1');
+var inputs = [input0, input1];
+var moneyFormat = wNumb({
+  decimals: 0,
+  thousand: ",",
+  postfix: "$"
+});
+noUiSlider.create(slider, {
+  start: [100, 8000],
+  connect: true,
+  tooltips: [false, true],
+  range: {
+    'min': 0,
+    'max': 9999
+  },
+  format: moneyFormat
+});
+slider.noUiSlider.on('update', function (values, handle) {
+  inputs[handle].value = values[handle];
+});
+inputs.forEach(function (input, handle) {
+  input.addEventListener('change', function () {
+    slider.noUiSlider.setHandle(handle, this.value);
+  });
+  input.addEventListener('keydown', function (e) {
+    var values = slider.noUiSlider.get();
+    var value = Number(values[handle]);
+    var steps = slider.noUiSlider.steps();
+    var step = steps[handle];
+    var position;
+    switch (e.which) {
+      case 13:
+        slider.noUiSlider.setHandle(handle, this.value);
+        break;
+      case 38:
+        position = step[1];
+        if (position === false) {
+          position = 1;
+        }
+        if (position !== null) {
+          slider.noUiSlider.setHandle(handle, value + position);
+        }
+        break;
+      case 40:
+        position = step[0];
+        if (position === false) {
+          position = 1;
+        }
+        if (position !== null) {
+          slider.noUiSlider.setHandle(handle, value - position);
+        }
+        break;
+    }
+  });
+});
 var dropDownTitleAll = document.querySelectorAll('.dropdown__title');
 dropDownTitleAll.forEach(function (item) {
   item.addEventListener('click', function () {
