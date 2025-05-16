@@ -284,7 +284,7 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-  background: url("/assets/media/close.svg") no-repeat;
+  background: url("../assets/media/close.svg") no-repeat;
   width: 100%;
   height: 100%;
 }
