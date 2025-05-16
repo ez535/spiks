@@ -1,66 +1,76 @@
 // =require ../core/config/js/index.js
 // =require ../core/lib/js/index.js
-window.onload = function () {
-  slideMin();
-  slideMax();
-};
 
-const minVal = document.querySelector(".range__min");
-const maxVal = document.querySelector(".range__max");
-const priceInputMin = document.querySelector(".input-wrap__min");
-const priceInputMax = document.querySelector(".input-wrap__max");
-const maxTooltip = document.querySelector(".tooltip_max");
-const minGap = 0;
-const range = document.querySelector(".range__track");
-const sliderMinValue = parseInt(minVal.min);
-const sliderMaxValue = parseInt(maxVal.max);
+let slider = document.getElementById('slider');
+let input0 = document.getElementById('input-with-keypress-0');
+let input1 = document.getElementById('input-with-keypress-1');
+let inputs = [input0, input1];
 
-function slideMin() {
-  let gap = parseInt(maxVal.value) - parseInt(minVal.value);
-  if( gap <= minGap ) {
-    minVal.value = parseInt(maxVal.value) - minGap;
-  }
+let moneyFormat = wNumb({
+  decimals: 0,
+  thousand: ",",
+  postfix: "$"
+});
 
-  priceInputMin.value = minVal.value;
-  setArea();
-}
+noUiSlider.create(slider, {
+  start: [100, 8000],
+  connect: true,
+  tooltips: [false, true],
+  range: {
+    'min': 0,
+    'max': 9999
+  },
+  format: moneyFormat
+});
 
-function slideMax() {
-  let gap = parseInt(maxVal.value) - parseInt(minVal.value);
-  if( gap <= minGap ) {
-    maxVal.value = parseInt(minVal.value) + minGap;
-  }
+slider.noUiSlider.on('update', function (values, handle) {
+  inputs[handle].value = values[handle];
+});
 
-  maxTooltip.innerHTML = maxVal.value + '$';
-  priceInputMax.value = maxVal.value;
-  setArea();
-}
+inputs.forEach(function (input, handle) {
+  input.addEventListener('change', function () {
+    slider.noUiSlider.setHandle(handle, this.value);
+  });
 
-function setArea() {
-  range.style.left = `${((minVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue)) * 100}%`;
+  input.addEventListener('keydown', function (e) {
+    let values = slider.noUiSlider.get();
+    let value = Number(values[handle]);
+    let steps = slider.noUiSlider.steps();
+    let step = steps[handle];
+    let position;
 
-  range.style.right = `${100 - ((maxVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue)) * 100 }%`;
-  maxTooltip.style.right = 100 - (maxVal.value / sliderMaxValue) * 100 + "%";
-}
+    switch (e.which) {
+      case 13:
+        slider.noUiSlider.setHandle(handle, this.value);
+        break;
 
-function setMinInput() {
-  let minPrice = parseInt(priceInputMin.value);
-  if(minPrice < sliderMinValue) {
-    priceInputMin.value = sliderMinValue;
-  }
+      case 38:
+        position = step[1];
 
-  minVal.value = priceInputMin.value;
-  slideMin();
-}
+        if (position === false) {
+          position = 1;
+        }
 
-function setMaxInput() {
-  let maxPrice = parseInt(priceInputMax.value);
-  if(maxPrice > sliderMaxValue) {
-    priceInputMax.value = sliderMaxValue;
-  }
-  maxVal.value = priceInputMax.value;
-  slideMax();
-}
+        if (position !== null) {
+          slider.noUiSlider.setHandle(handle, value + position);
+        }
+
+        break;
+      case 40:
+        position = step[0];
+
+        if (position === false) {
+          position = 1;
+        }
+
+        if (position !== null) {
+          slider.noUiSlider.setHandle(handle, value - position);
+        }
+
+        break;
+      }
+  });
+});
 
 const dropDownTitleAll = document.querySelectorAll('.dropdown__title');
 dropDownTitleAll.forEach((item) => {

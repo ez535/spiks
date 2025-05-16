@@ -2,16 +2,7 @@
     h2  Price Range
 
     .range__slider
-        span.range__track
-        input( type='range' name='min-value' min='500' max='9999' step='1' value='500' oninput='slideMin()').range__min
-        input( type='range' name='max-value' min='500' max='9999' step='1' value='9999' oninput='slideMax()').range__max
-        .tooltip.tooltip_max
-    .range__boxes 
-        .box.box__min-box 
-            .input-wrap 
-                input(type="number" name='input-min-wrap' onchange='setMinInput()').input-wrap__min
-                span $
-        .box.box__max-box 
-            .input-wrap 
-                input(type="number" name='input-max-wrap' onchange='setMaxInput()').input-wrap__max
-                span $
+        #slider
+        .range__inputs 
+            input(type="text" id="input-with-keypress-0")
+            input(type="text" id="input-with-keypress-1")

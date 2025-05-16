@@ -38,5 +38,7 @@
     "hygen": "^6.2.11",
     "sass": "^1.66.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "nouislider": "^15.8.1"
+  }
 }

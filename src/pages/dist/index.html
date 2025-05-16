@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>= Spiks</title>
+  <title>Spiks</title>
   <link rel="stylesheet" href="css/index.css">
   <script src="/js/index.js" defer></script>
 </html>
@@ -17,10 +17,10 @@
   <main class="main"> 
     <div class="range">
       <h2> Price Range</h2>
+      <div class="slider"></div>
       <div class="range__slider"><span class="range__track"></span>
         <input class="range__min" type="range" name="min-value" min="500" max="9999" step="1" value="500" oninput="slideMin()">
         <input class="range__max" type="range" name="max-value" min="500" max="9999" step="1" value="9999" oninput="slideMax()">
-        <div class="tooltip tooltip_min"></div>
         <div class="tooltip tooltip_max"></div>
       </div>
       <div class="range__boxes"> 
@@ -62,8 +62,8 @@
         <div class="dropdown__title"> <span>Delivery Period</span><img src="assets/media/arrow_down.svg" alt="arrow"></div>
         <ul class="dropdown__list"> 
           <li class="dropdown__item"> 
-            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt2" value="1h">
-            <label class="dropdown__label" for="drop2-opt2">1h</label>
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt1" value="1h">
+            <label class="dropdown__label" for="drop2-opt1">1h</label>
           </li>
           <li class="dropdown__item"> 
             <input class="dropdown__checkbox" type="checkbox" id="drop2-opt2" value="24h">
@@ -74,8 +74,8 @@
             <label class="dropdown__label" for="drop2-opt3">Today</label>
           </li>
           <li class="dropdown__item"> 
-            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt3" value="Next Week">
-            <label class="dropdown__label" for="drop2-opt3">Next Week</label>
+            <input class="dropdown__checkbox" type="checkbox" id="drop2-opt4" value="Next Week">
+            <label class="dropdown__label" for="drop2-opt4">Next Week</label>
           </li>
         </ul>
       </div>
@@ -95,12 +95,12 @@
             <label class="dropdown__label" for="drop3-opt3">Meduim</label>
           </li>
           <li class="dropdown__item"> 
-            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt3" value="Small">
-            <label class="dropdown__label" for="drop3-opt3">Small</label>
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt4" value="Small">
+            <label class="dropdown__label" for="drop3-opt4">Small</label>
           </li>
           <li class="dropdown__item"> 
-            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt3" value="Tiny">
-            <label class="dropdown__label" for="drop3-opt3">Tiny</label>
+            <input class="dropdown__checkbox" type="checkbox" id="drop3-opt5" value="Tiny">
+            <label class="dropdown__label" for="drop3-opt5">Tiny</label>
           </li>
         </ul>
       </div>
