@@ -167,7 +167,7 @@ header {
   position: absolute;
   width: 11px;
   height: 5px;
-  background-image: url("/assets/media/polygon.svg");
+  background-image: url("assets/media/polygon.svg");
   bottom: -5px;
   left: 50%;
   -webkit-transform: translate(-50%, 0);
