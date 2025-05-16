@@ -346,6 +346,8 @@ header {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+  width: 12px;
+  height: 24px;
 }
 
 .dropdown__title.click ~ .dropdown__list {
